@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b0713">
+<title>For chaandh ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Sacramento&display=swap');
+
+:root{
+  --bg:#0b0713;
+  --pink:#ff7aa8;
+  --rose:#ffb3c7;
+  --white:#fff8fb;
+  --muted:#c9bdc7;
+  --card:rgba(255,255,255,.075);
+  --border:rgba(255,255,255,.13);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:
+    radial-gradient(circle at 20% 10%,rgba(255,105,160,.13),transparent 28%),
+    radial-gradient(circle at 80% 30%,rgba(151,105,255,.12),transparent 30%),
+    var(--bg);
+  color:var(--white);font-family:Inter,sans-serif;overflow-x:hidden
+}
+body.locked{overflow:hidden}
+canvas#stars{position:fixed;inset:0;width:100%;height:100%;z-index:-2;pointer-events:none}
+.noise{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.035;
+background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E")}
+section{min-height:100vh;padding:100px 20px;display:flex;align-items:center;justify-content:center;position:relative}
+.container{width:min(1050px,100%);margin:auto}
+.hero{min-height:100svh;text-align:center;flex-direction:column;gap:20px}
+.eyebrow{letter-spacing:4px;text-transform:uppercase;font-size:.72rem;color:var(--rose);opacity:.85}
+.hero h1{font-family:Sacramento,cursive;font-size:clamp(4.2rem,15vw,9rem);line-height:.85;font-weight:400;text-shadow:0 0 35px rgba(255,122,168,.3);animation:softGlow 3s ease-in-out infinite alternate}
+.subtitle{max-width:620px;color:var(--muted);line-height:1.8;font-size:clamp(.95rem,2vw,1.1rem)}
+.btn{border:1px solid rgba(255,179,199,.35);background:linear-gradient(135deg,rgba(255,122,168,.18),rgba(200,168,255,.12));color:white;padding:14px 24px;border-radius:999px;cursor:pointer;font:500 .9rem Inter,sans-serif;transition:.3s;box-shadow:0 10px 35px rgba(0,0,0,.2);backdrop-filter:blur(10px)}
+.btn:hover{transform:translateY(-3px) scale(1.02);border-color:var(--rose);box-shadow:0 15px 45px rgba(255,122,168,.18)}
+.scroll-hint{position:absolute;bottom:28px;color:#8f8390;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;animation:bob 2s ease-in-out infinite}
+.section-title{text-align:center;margin-bottom:45px}
+.section-title .mini{color:var(--rose);font-size:.75rem;letter-spacing:3px;text-transform:uppercase}
+.section-title h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,7vw,4.6rem);font-weight:500;margin-top:8px}
+.section-title p{color:var(--muted);max-width:650px;margin:12px auto 0;line-height:1.8}
+.letter{max-width:850px;margin:auto;padding:clamp(28px,6vw,65px);background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.035));border:1px solid var(--border);border-radius:30px;box-shadow:0 25px 80px rgba(0,0,0,.3);position:relative;overflow:hidden}
+.letter:before{content:"";position:absolute;width:250px;height:250px;background:rgba(255,122,168,.09);filter:blur(70px);top:-120px;right:-100px}
+.letter p{position:relative;font-family:'Cormorant Garamond',serif;font-size:clamp(1.15rem,2.7vw,1.5rem);line-height:1.85;color:#f9edf2;white-space:pre-line}
+.signature{margin-top:30px;text-align:right;color:var(--rose);font-family:Sacramento,cursive;font-size:2.2rem}
+.remember-grid,.promise-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{padding:28px 24px;min-height:190px;background:var(--card);border:1px solid var(--border);border-radius:24px;backdrop-filter:blur(12px);transition:.4s;transform:translateY(20px);opacity:0}
+.card.show{opacity:1;transform:translateY(0)}
+.card:hover{transform:translateY(-7px);border-color:rgba(255,179,199,.3);background:rgba(255,255,255,.1)}
+.card .icon{font-size:1.7rem;margin-bottom:18px}.card h3{font-family:'Cormorant Garamond',serif;font-size:1.55rem;margin-bottom:10px}.card p{color:var(--muted);line-height:1.7;font-size:.92rem}
+.hug-section{text-align:center}.hug-heart{width:180px;height:180px;margin:15px auto 30px;display:grid;place-items:center;position:relative;font-size:5rem;filter:drop-shadow(0 0 30px rgba(255,80,140,.25));animation:heartbeat 2s infinite}
+.hug-heart:before{content:"";position:absolute;inset:15px;border:1px solid rgba(255,179,199,.2);border-radius:50%;animation:ring 2.5s infinite}
+.hug-message{min-height:120px;max-width:700px;margin:25px auto;color:var(--muted);font-family:'Cormorant Garamond',serif;font-size:1.45rem;line-height:1.7;opacity:.85}
+.hug-message.active{color:var(--white);opacity:1;animation:fadeUp .7s both}
+.final{text-align:center;overflow:hidden}.final-content{max-width:800px;margin:auto}
+.secret{display:none;margin-top:35px;animation:fadeUp 1.2s both}.secret.visible{display:block}
+.secret h3{font-family:Sacramento,cursive;font-size:clamp(3rem,10vw,6rem);color:var(--rose);font-weight:400}
+.secret p{font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,3vw,1.65rem);line-height:1.9;color:#f9edf2;white-space:pre-line}
+.final-sign{margin-top:30px;font-family:Sacramento,cursive;color:var(--rose);font-size:2.5rem}
+.reveal{opacity:0;transform:translateY(35px);transition:1s ease}.reveal.visible{opacity:1;transform:none}
+.heart-particle{position:fixed;pointer-events:none;z-index:50;animation:floatHeart 2.5s ease-out forwards;font-size:18px}
+footer{text-align:center;padding:25px;color:#716672;font-size:.72rem;letter-spacing:1px}
+@keyframes softGlow{to{text-shadow:0 0 55px rgba(255,122,168,.55)}}
+@keyframes bob{50%{transform:translateY(8px)}}
+@keyframes heartbeat{0%,100%{transform:scale(1)}15%{transform:scale(1.08)}30%{transform:scale(1)}}
+@keyframes ring{50%{transform:scale(1.25);opacity:0}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes floatHeart{0%{transform:translate(0,0) scale(.7);opacity:0}15%{opacity:1}100%{transform:translate(var(--x),-180px) rotate(25deg) scale(1.25);opacity:0}}
+@media(max-width:760px){
+  section{padding:85px 16px}.remember-grid,.promise-grid{grid-template-columns:1fr}.card{min-height:auto}.hero h1{font-size:clamp(4rem,22vw,7rem)}
+}
+</style>
+</head>
+
+<body class="locked">
+<canvas id="stars"></canvas><div class="noise"></div>
+
+
+<!-- 1. OPENING -->
+<section class="hero" id="home">
+  <div class="eyebrow">A little place I made just for you</div>
+  <h1>chaandh❤️</h1>
+  <p class="subtitle">You may be going somewhere new, but I wanted to leave you with something that reminds you that you are deeply loved.</p>
+  <button class="btn" id="openBtn">Open Your Surprise ❤️</button>
+  <div class="scroll-hint">Scroll slowly ↓</div>
+</section>
+
+<main>
+<!-- 2. YOUR LOVE LETTER -->
+<section id="letter">
+<div class="container reveal">
+  <div class="section-title"><div class="mini">From my heart</div><h2>Your Love Letter</h2><p>Every word here comes from your mohi.. ❤️</p></div>
+  <div class="letter">
+    <p>My chaandh❤️,
+
+Nenu ninnu na life lo highest place lo pettukunna — the place where my parents are. ❤️
+
+Ninnu chala sarlu teliyakundane baadha pettanu, hurt chesanu. I am genuinely sorry for every one of those moments. Once I realised my mistakes, I promised myself that I would try my level best not to repeat them again.
+
+I will always respect your perspective, your feelings, and the way you see things — even when it hurts me sometimes. Because loving you, for me, is not about changing you. It is about understanding you, respecting you, and standing beside you.
+
+When I pray, I include you in every prayer. Somewhere in my heart, I always pray that you should be happy, peaceful, and become the best version of yourself. And if I can be a part of that journey, I will consider myself lucky. ❤️
+
+Nuvvu neeku nachinattu undu. Ninnu eppudu support chese vallalo nenu front lo unta.
+
+No one can replace you.
+No one can change the place you have in me. ❤️
+You are my first love, and you are my last love.
+
+I don't need someone perfect. I don't need any conditions or parameters. I just need you, till my last breath.
+
+Nothing in this world can stop me from loving you…
+not even youuu. ❤️
+
+Nenu mee daddy antha love cheyyalekapovachu. But mee daddy taruvata, ninnu antha ga preminche people lo nenu first lo undalani korukuntunna.
+
+And natho unnantha sepu, mee daddy love ni miss avvakunda chusukune responsibility naadhi. I swear. ❤️
+
+If I have to wait just for us to be together in the end, then I'll patiently wait for you until my last breath.
+
+Whatever the situation is, whatever life brings us, I will be there. I will stand by you. Not only when everything is beautiful, but especially when things are difficult.
+
+I don't need only beautiful moments with you.
+
+I want every moment with you — because somehow, you make even the simplest moments beautiful. ❤️
+Maybe someday we will look back at all these little moments and realise that these were actually the most beautiful parts of our story.
+
+Neepai naaku unna prema eppatiki podhu raa. ❤️
+I will give my entire loyalty, respect,trust and everything to u raa
+I see you as my mother raa 🥺
+
+Distance may change how often we see each other. Time may change many things around us.
+
+But you will always have a place in my heart that nobody else can take.
+
+When you miss me, when hostel feels lonely, or when you simply need to remember how much you mean to me...
+
+Just think about me
+
+Because somewhere, someone is always praying for you, waiting for you, supporting you, and loving you.
+
+Me. ❤️
+
+Until my last breath.
+Always yours. ❤️</p>
+    <div class="signature">— your mohi.. ❤️</div>
+  </div>
+</div>
+</section>
+
+<!-- 3. THINGS TO REMEMBER -->
+<section id="remember">
+<div class="container">
+  <div class="section-title reveal"><div class="mini">For the days we're apart</div><h2>Things I Want You to Remember</h2><p>Keep these little reminders close on the days you need them.</p></div>
+  <div class="remember-grid">
+    <div class="card"><div class="icon">🌙</div><h3>You are never alone.</h3><p>Even when the room around you feels unfamiliar, remember that someone is thinking about you and wishing he could be there.</p></div>
+    <div class="card"><div class="icon">🌷</div><h3>I'm proud of you.</h3><p>Be brave, learn new things, make mistakes, laugh loudly and grow. I will always be proud of the person you are becoming.</p></div>
+    <div class="card"><div class="icon">✨</div><h3>Distance is only distance.</h3><p>It can change where we are, but it cannot change how important you are to me or how much space you have in my heart.</p></div>
+    <div class="card"><div class="icon">🫶</div><h3>Take care of yourself.</h3><p>Eat properly, sleep enough, smile often and don't be too hard on yourself. Your happiness matters to me.</p></div>
+    <div class="card"><div class="icon">☁️</div><h3>Bad days will pass.</h3><p>You don't have to be strong every second. If a day feels heavy, breathe, rest and remember that tomorrow can be softer.</p></div>
+    <div class="card"><div class="icon">❤️</div><h3>You are loved.</h3><p>Not because of what you do for me. Not because you are perfect. Simply because you are you.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- 6. VIRTUAL HUG -->
+<section class="hug-section" id="hug">
+<div class="container reveal">
+  <div class="section-title"><div class="mini">Whenever you need one</div><h2>A Virtual Hug</h2><p>Because sometimes words aren't enough.</p></div>
+  <div class="hug-heart">❤️</div>
+  <button class="btn" id="hugBtn">I Need a Hug 🫂</button>
+  <div class="hug-message" id="hugMessage">Press the button whenever you miss me.</div>
+</div>
+</section>
+
+<!-- 7. PROMISES -->
+<section id="promises">
+<div class="container">
+  <div class="section-title reveal"><div class="mini">Little promises</div><h2>My Promises to You</h2><p>Not perfect promises. Just honest ones.</p></div>
+  <div class="promise-grid">
+    <div class="card"><div class="icon">🤍</div><h3>I'll listen.</h3><p>Even when you don't know how to explain what you're feeling, I'll try to understand.</p></div>
+    <div class="card"><div class="icon">🌟</div><h3>I'll believe in you.</h3><p>Especially on the days when you temporarily forget how capable and wonderful you are.</p></div>
+    <div class="card"><div class="icon">🎀</div><h3>I'll celebrate you.</h3><p>Your big achievements and your tiny victories will always be worth celebrating to me.</p></div>
+    <div class="card"><div class="icon">🌧️</div><h3>I'll stay through difficult days.</h3><p>You never have to pretend everything is okay just to be loved.</p></div>
+    <div class="card"><div class="icon">🕊️</div><h3>I'll give you space to grow.</h3><p>I want to see you become everything you dream of becoming, even when that means being far away for a while.</p></div>
+    <div class="card"><div class="icon">💗</div><h3>I'll choose you.</h3><p>Not only on the easy days, but through the ordinary days, the messy days and everything in between.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- 9. FINAL SURPRISE -->
+<section class="final" id="final">
+<div class="container final-content reveal">
+  <div class="section-title"><div class="mini">Before you leave</div><h2>One Last Thing…</h2><p>There is one more little piece of my heart waiting here.</p></div>
+  <button class="btn" id="secretBtn">Open It 💌</button>
+  <div class="secret" id="secret">
+    <h3>For you.</h3>
+    <p>If you ever feel alone in that hostel, come back to this little place.
+
+Somewhere in this world, there is a person thinking about you, missing you, believing in you, and loving you more than these words could ever explain.
+
+I may not be beside you every day, but my heart doesn't know how to stay away from you.
+
+Go chase your dreams. Make beautiful memories. Become everything you're meant to become.
+
+And whenever you look at the night sky, remember that somewhere I'm looking at the same sky and thinking about you.
+
+Distance may change how often we see each other. Time may change many things around us.
+
+But you will always have a place in my heart that nobody else can take.
+
+Neepai naaku unna prema eppatiki podhu raa. ❤️
+
+Until my last breath.
+Always yours. ❤️</p>
+    <div class="final-sign">your mohi.. ❤️</div>
+  </div>
+</div>
+</section>
+</main>
+
+<footer>Made with all my love, just for chaandh ❤️</footer>
+
+<script>
+const canvas=document.getElementById("stars"),ctx=canvas.getContext("2d");
+let stars=[];
+function resizeCanvas(){
+ canvas.width=innerWidth*devicePixelRatio;canvas.height=innerHeight*devicePixelRatio;
+ canvas.style.width=innerWidth+"px";canvas.style.height=innerHeight+"px";
+ ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+ stars=Array.from({length:Math.min(130,Math.floor(innerWidth/7))},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.5+.2,a:Math.random()*6,s:Math.random()*.015+.003}));
+}
+function drawStars(){
+ ctx.clearRect(0,0,innerWidth,innerHeight);
+ stars.forEach(s=>{s.a+=s.s;ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(255,220,235,${.25+(Math.sin(s.a)*.5+.5)*.55})`;ctx.fill()});
+ requestAnimationFrame(drawStars);
+}
+addEventListener("resize",resizeCanvas);resizeCanvas();drawStars();
+
+document.getElementById("openBtn").onclick=()=>{
+ document.body.classList.remove("locked");
+ document.getElementById("letter").scrollIntoView({behavior:"smooth"});
+ burstHearts(16);
+};
+
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(e=>{
+  if(e.isIntersecting){
+   e.target.classList.add("visible");
+   e.target.querySelectorAll?.(".card").forEach((c,i)=>setTimeout(()=>c.classList.add("show"),i*100));
+  }
+ });
+},{threshold:.12});
+document.querySelectorAll(".reveal").forEach(e=>observer.observe(e));
+
+const cardObserver=new IntersectionObserver(entries=>{
+ entries.forEach(e=>{
+  if(e.isIntersecting){
+   e.target.querySelectorAll(".card").forEach((c,i)=>setTimeout(()=>c.classList.add("show"),i*100));
+   cardObserver.unobserve(e.target);
+  }
+ });
+},{threshold:.1});
+document.querySelectorAll(".remember-grid,.promise-grid").forEach(e=>cardObserver.observe(e));
+
+const hugMessage=document.getElementById("hugMessage");
+let hugIndex=0;
+const hugTexts=[
+"Come here… just for a moment. Close your eyes and imagine I'm holding you tightly. You don't have to say anything. Just stay here for a little while. ❤️",
+"This is your reminder that no matter how far away you are, you still have a hug waiting for you from me. 🫂",
+"If I could teleport right now, I wouldn't even say hello. I'd just hug you for a really, really long time. 🤍"
+];
+document.getElementById("hugBtn").onclick=()=>{
+ hugMessage.classList.remove("active");
+ setTimeout(()=>{hugMessage.textContent=hugTexts[hugIndex++%hugTexts.length];hugMessage.classList.add("active")},150);
+ burstHearts(24);
+};
+
+document.getElementById("secretBtn").onclick=()=>{
+ document.getElementById("secret").classList.add("visible");
+ document.getElementById("secretBtn").style.display="none";
+ burstHearts(35);
+ setTimeout(()=>document.getElementById("secret").scrollIntoView({behavior:"smooth",block:"center"}),300);
+};
+
+function burstHearts(count=15){
+ for(let i=0;i<count;i++)setTimeout(()=>{
+  const h=document.createElement("div");h.className="heart-particle";
+  h.textContent=["❤️","💗","💕","✨","🤍"][Math.floor(Math.random()*5)];
+  h.style.left=(30+Math.random()*40)+"vw";h.style.top=(55+Math.random()*20)+"vh";
+  h.style.setProperty("--x",(Math.random()*220-110)+"px");document.body.appendChild(h);
+  setTimeout(()=>h.remove(),2600);
+ },i*45);
+}
+
+addEventListener("load",()=>setTimeout(()=>burstHearts(8),900));
+</script>
+</body>
+</html>
